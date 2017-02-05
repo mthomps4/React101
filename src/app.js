@@ -15,7 +15,7 @@ const container = document.querySelector('#appContainer');
 // Render app
 ReactDOM.render(
   <AppContainer>
-    <App players={playerList}/>
+    <App initialPlayers={playerList}/>
   </AppContainer>
   , container
 );

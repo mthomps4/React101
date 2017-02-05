@@ -6,7 +6,7 @@ const Player = (props) =>
       <div className="player-name">{props.name}</div>
 
       <div className="player-score">
-        <Counter /> 
+        <Counter score={props.score}/> 
       </div>
     </div>
 ;
