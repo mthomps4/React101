@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 require('./index.html');
 import "./css/app.css";
-import "./css/main.css";
 
 import {AppContainer} from 'react-hot-loader';
 import App from './components/Scoreboard.js';
