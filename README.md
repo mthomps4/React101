@@ -7,4 +7,4 @@ Basic Overview of React Babel and Webpack -- Scoreboard Components
 - Total Points
 - Stopwatch Start/Stop/Reset
 
-![Scoreboard Image](https://github.com/mthomps4/React101/Scoreboard.png?raw=true)
+![Scoreboard Image](https://github.com/mthomps4/React101/blob/master/Scoreboard.png?raw=true)
