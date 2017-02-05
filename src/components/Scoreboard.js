@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './header.jsx';
 import Player from './player.jsx';
+import AddPlayerForm from './addPlayer.jsx';
 
+var nextId=4; //Player Id Key ++ each addition
 
 var App = React.createClass({
   propTypes: {
@@ -25,16 +27,48 @@ var App = React.createClass({
     };
   },
 
+  onScoreChange: function(index, delta){
+    console.log('onScoreChange', index, delta);
+    this.state.players[index].score += delta;
+    this.setState(this.state);
+  },
+
+  onPlayerAdd: function(name){
+    console.log('player added', name);
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: nextId,
+    });
+    this.setState(this.state);
+    nextId +=1;
+  },
+
+  onRemovePlayer: function(index){
+    this.state.players.splice(index, 1);
+    this.setState(this.state);
+  },
+
   render: function() {
     return(
         <div className="scoreboard">
-          <Header title={this.props.title}/>
+          <Header title={this.props.title} players={this.state.players}/>
 
           <div className="players">
-            {this.state.players.map(function(player){
-              return <Player name={player.name} score={player.score} key={player.id}/>
-            })}
+            {this.state.players.map(function(player, index){
+              return(
+                <Player
+                  onScoreChange={function(delta) {this.onScoreChange(index,delta)}.bind(this)}
+                  onRemove={function(){this.onRemovePlayer(index)}.bind(this)}
+                  name={player.name}
+                  score={player.score}
+                  key={player.id}/>
+              );
+            }.bind(this))}
           </div>
+
+          <AddPlayerForm onAdd={this.onPlayerAdd}/>
+
         </div>
       );
   }
